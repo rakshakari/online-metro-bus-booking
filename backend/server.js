@@ -12,9 +12,17 @@ const busRoutes = require("./routes/busRoutes");
 
 const routeRoutes = require("./routes/routeRoutes");
 
+const scheduleRoutes = require("./routes/scheduleRoutes");
+
 app.use("/api/buses", busRoutes);
 
 app.use("/api/routes", routeRoutes);
+
+app.use("/api/schedules", scheduleRoutes);
+
+app.get("/schedule-test", (req, res) => {
+    res.json({ message: "Server test is working" });
+});
 
 app.get("/", (req, res) => {
     res.json({

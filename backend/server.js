@@ -10,7 +10,11 @@ app.use(express.json());
 
 const busRoutes = require("./routes/busRoutes");
 
+const routeRoutes = require("./routes/routeRoutes");
+
 app.use("/api/buses", busRoutes);
+
+app.use("/api/routes", routeRoutes);
 
 app.get("/", (req, res) => {
     res.json({

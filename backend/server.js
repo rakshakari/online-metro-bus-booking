@@ -8,6 +8,10 @@ const app = express();
 app.use(cors());
 app.use(express.json());
 
+const busRoutes = require("./routes/busRoutes");
+
+app.use("/api/buses", busRoutes);
+
 app.get("/", (req, res) => {
     res.json({
         message: "Online Metro Bus Booking System API is running"

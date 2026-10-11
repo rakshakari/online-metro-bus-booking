@@ -9,14 +9,21 @@ const app = express();
 
 app.use(cors());
 app.use(express.json());
+app.use((req, res, next) => {
+    console.log("REQUEST:", req.method, req.url);
+    next();
+});
 
 // Import API routes
 const busRoutes = require("./routes/busRoutes");
 const routeRoutes = require("./routes/routeRoutes");
 const scheduleRoutes = require("./routes/scheduleRoutes");
+console.log("Schedule routes file loaded from:", require.resolve("./routes/scheduleRoutes"));
+console.log("Schedule test endpoint should be available at /api/schedules/test");
 const seatRoutes = require("./routes/seatRoutes");
 const passengerRoutes = require("./routes/passengerRoutes");
 const searchRoutes = require("./routes/searchRoutes");
+const bookingRoutes = require("./routes/bookingRoutes");
 
 // Register API routes
 app.use("/api/buses", busRoutes);
@@ -25,6 +32,13 @@ app.use("/api/schedules", scheduleRoutes);
 app.use("/api/seats", seatRoutes);
 app.use("/api/passengers", passengerRoutes);
 app.use("/api/search", searchRoutes);
+
+// Temporary direct test route — keep this BEFORE bookingRoutes
+app.get("/api/bookings/test-direct", (req, res) => {
+    res.json({ message: "Direct booking test works" });
+});
+
+app.use("/api/bookings", bookingRoutes);
 
 // API home
 app.get("/", (req, res) => {

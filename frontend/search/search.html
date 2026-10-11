@@ -1,0 +1,52 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Search Buses | Metro Bus</title>
+    <link rel="stylesheet" href="search.css">
+</head>
+<body>
+    <main class="container">
+        <h1>Search Buses</h1>
+        <p>Find available buses by bus number, name, or type.</p>
+
+        <form id="searchForm">
+            <input
+                type="search"
+                id="searchInput"
+                placeholder="e.g. Colombo, BUS001, AC"
+                aria-label="Search buses"
+                required
+            >
+            <button type="submit">Search</button>
+        </form>
+
+        <p id="message" role="status"></p>
+
+        <div class="table-wrapper">
+            <table>
+                <thead>
+                    <tr>
+                        <th>Bus Number</th>
+                        <th>Bus Name</th>
+                        <th>Bus Type</th>
+                        <th>Total Seats</th>
+                        <th>Status</th>
+                    </tr>
+                </thead>
+                <tbody id="busResults">
+                    <tr>
+                        <td colspan="5">Enter a search term to find buses.</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <a href="../index.html">Back to Home</a>
+    </main>
+
+    <script src="search.js"></script>
+</body>
+</html>

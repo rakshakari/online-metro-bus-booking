@@ -1,0 +1,82 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bus Management</title>
+    <link rel="stylesheet" href="bus.css">
+</head>
+<body>
+    <header>
+        <h1>Online Metro Bus Booking System</h1>
+        <p>Bus Management</p>
+    </header>
+
+    <main class="container">
+        <section class="form-section">
+            <h2>Add a New Bus</h2>
+
+            <form id="busForm">
+                <label for="busNumber">Bus Number</label>
+                <input type="text" id="busNumber" required
+                       placeholder="e.g. BUS001">
+
+                <label for="busName">Bus Name</label>
+                <input type="text" id="busName" required
+                       placeholder="e.g. Colombo Express">
+
+                <label for="busType">Bus Type</label>
+                <select id="busType" required>
+                    <option value="">Select bus type</option>
+                    <option value="Normal">Normal</option>
+                    <option value="Semi-Luxury">Semi-Luxury</option>
+                    <option value="Luxury">Luxury</option>
+                    <option value="AC">AC</option>
+                </select>
+
+                <label for="totalSeats">Total Seats</label>
+                <input type="number" id="totalSeats" min="1" required
+                       placeholder="e.g. 45">
+
+                <button type="submit">Add Bus</button>
+            </form>
+
+            <p id="message" role="status"></p>
+        </section>
+
+       
+<section class="list-section">
+    <h2>Available Buses</h2>
+
+    <input
+        type="text"
+        id="busSearch"
+        placeholder="Search by bus number, name, or type..."
+        aria-label="Search buses"
+    >
+
+    <button type="button" id="refreshBuses">Refresh List</button>
+
+    <div class="table-wrapper">
+        <table>
+            <thead>
+                <tr>
+                    <th>Bus Number</th>
+                    <th>Bus Name</th>
+                    <th>Type</th>
+                    <th>Total Seats</th>
+                    <th>Status</th>
+                    <th>Actions</th>
+                </tr>
+            </thead>
+            <tbody id="busTableBody"></tbody>
+        </table>
+    </div>
+</section>
+ 
+    </main>
+
+    <script src="bus.js"></script>
+</body>
+</html>

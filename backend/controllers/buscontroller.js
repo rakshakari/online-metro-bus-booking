@@ -1,3 +1,4 @@
+
 const Bus = require("../models/bus");
 
 // Create a new bus
@@ -19,7 +20,6 @@ const createBus = async (req, res) => {
 const getAllBuses = async (req, res) => {
     try {
         const buses = await Bus.find();
-
         res.status(200).json(buses);
     } catch (error) {
         res.status(500).json({
@@ -29,7 +29,58 @@ const getAllBuses = async (req, res) => {
     }
 };
 
+// Update a bus by its ID
+const updateBus = async (req, res) => {
+    try {
+        const updatedBus = await Bus.findByIdAndUpdate(
+            req.params.id,
+            req.body,
+            {
+                new: true,
+                runValidators: true
+            }
+        );
+
+        if (!updatedBus) {
+            return res.status(404).json({
+                message: "Bus not found"
+            });
+        }
+
+        res.status(200).json(updatedBus);
+    } catch (error) {
+        res.status(400).json({
+            message: "Failed to update bus",
+            error: error.message
+        });
+    }
+};
+
+// Delete a bus by its ID
+const deleteBus = async (req, res) => {
+    try {
+        const deletedBus = await Bus.findByIdAndDelete(req.params.id);
+
+        if (!deletedBus) {
+            return res.status(404).json({
+                message: "Bus not found"
+            });
+        }
+
+        res.status(200).json({
+            message: "Bus deleted successfully"
+        });
+    } catch (error) {
+        res.status(400).json({
+            message: "Failed to delete bus",
+            error: error.message
+        });
+    }
+};
+
 module.exports = {
     createBus,
-    getAllBuses
+    getAllBuses,
+    updateBus,
+    deleteBus
 };

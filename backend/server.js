@@ -12,11 +12,14 @@ const busRoutes = require("./routes/busRoutes");
 const routeRoutes = require("./routes/routeRoutes");
 const scheduleRoutes = require("./routes/scheduleRoutes");
 const seatRoutes = require("./routes/seatRoutes");
+const passengerRoutes = require("./routes/passengerRoutes");
 
 app.use("/api/buses", busRoutes);
 app.use("/api/routes", routeRoutes);
 app.use("/api/schedules", scheduleRoutes);
 app.use("/api/seats", seatRoutes);
+app.use("/api/passengers", passengerRoutes);
+
 
 app.get("/", (req, res) => {
     res.json({

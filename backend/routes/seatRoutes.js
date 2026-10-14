@@ -9,9 +9,7 @@ const {
     getAllSeats
 } = require("../controllers/seatcontroller");
 
-router.get("/test", (req, res) => {
-    res.json({ message: "Seat route is working" });
-});
+
 
 router.post("/", createSeat);
 
